@@ -1,3 +1,19 @@
+:root {
+    --main-background: #121212;
+    --input-bar-background: #2E2E2F;
+    --search-btn-background: #4B4B4B;
+    --main-text: #FFFFFF;
+    --placeholder-text: #A5A5A5;
+}
+
 body {
     font-family: 'Inter', sans-serif;
+    color: var(--main-text);
+    background-color: var(--main-background);
+}
+
+main {
+    max-width: 375px;
+    border: 1px solid #fff;
+    margin: 0 auto;
 }
