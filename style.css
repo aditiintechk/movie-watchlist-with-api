@@ -165,3 +165,14 @@ main {
     font-size: 0.8rem;
     color: var(--placeholder-text);
 }
+
+.default-section {
+    text-align: center;
+    opacity: 0.3;
+    margin-top: 6em;
+}
+
+.default-section img {
+    width: 4rem;
+    filter: invert(65%) sepia(1%) saturate(3286%) hue-rotate(20deg) brightness(101%) contrast(91%);
+}
