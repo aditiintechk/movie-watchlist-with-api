@@ -12,6 +12,7 @@ body {
     background-color: var(--main-background);
     margin: 0;
     padding: 0;
+    line-height: 1.4;
 }
 
 /* Typography */
@@ -33,15 +34,16 @@ a, p {
     font-size: 0.875rem;
 }
 
-h4, span {
+h4{
     font-size: 0.75rem;
+    font-weight: 200;
 }
 
 /* Main Section */
 
 main {
     max-width: 34.375rem;
-    border: 1px solid #fff;
+    min-height: 100vh;
     margin: 0 auto;
     position: relative;
 }
@@ -70,7 +72,10 @@ main {
 
 .options:hover,
 .options:active,
-.options:focus {
+.options:focus,
+.add-to-watchlist:hover,
+.add-to-watchlist:focus,
+.add-to-watchlist:active {
     color: #A5A5A5;
 }
 
@@ -126,7 +131,37 @@ main {
 }
 
 .movie-article {
-    padding-bottom: 1.5em;
+    padding: 1.5em 0;
     border-bottom: 1.5px solid #2c2c2c;
+    gap: 1em;
 }
 
+.movie-details {
+    align-items: center;
+}
+
+.first-row {
+    gap: 0.4em;
+}
+
+.second-row {
+    gap: 1em;
+    margin: 1em 0;
+}
+
+.add-to-watchlist {
+    background-color: none;
+    border: none;
+    outline: none;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.add-to-watchlist img {
+    width: 0.6rem;
+}
+
+.description {
+    font-size: 0.8rem;
+    color: var(--placeholder-text);
+}
