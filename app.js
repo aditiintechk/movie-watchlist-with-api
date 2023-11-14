@@ -6,6 +6,7 @@ const searchInput = document.getElementById('search-input')
 const searchButton = document.getElementById('search-btn')
 const movieDisplaySection = document.querySelector('.movie-section')
 const defaultDisplaySection = document.querySelector('.default-section')
+const errorSection = document.querySelector('.error-section')
 
 // Initialisations
 
@@ -68,7 +69,10 @@ function fetchEachMovie(movieTitlesArray) {
 
 // Render the movies' stack
 function renderMovieCard(data) {
+    console.log(errorSection)
     defaultDisplaySection.style.display = 'none'
+    errorSection.style.display = 'none'
+
     // Object destructuring
     const {Title, Poster, imdbRating, Runtime, Genre, Plot} = data
     movieDisplaySection.innerHTML += `
@@ -97,9 +101,6 @@ function formatTitle(movieTitle) {
 
 // Render error Message
 function errorMessage() {
-    styleSection = movieDisplaySection.style
-    movieDisplaySection.innerHTML = `Unable to find what you’re looking for. Please try another search.`
-    styleSection.textAlign = 'center'
-    styleSection.marginTop = '10em'
-    styleSection.opacity = '0.4'
+    errorSection.style.display = 'block'
+    errorSection.innerHTML = `<p> Unable to find what you’re looking for. Please try another search. </p>`
 }

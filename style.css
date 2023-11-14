@@ -200,3 +200,12 @@ main {
     width: 4rem;
     filter: invert(65%) sepia(1%) saturate(3286%) hue-rotate(20deg) brightness(101%) contrast(91%);
 }
+
+.error-section {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 6em;
+    color: var(--placeholder-text);
+    font-weight: bold;
+}
