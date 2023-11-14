@@ -28,22 +28,26 @@ searchButton.addEventListener('click', fetchMovie)
 function fetchMovie() {
     movieDisplaySection.innerHTML = ``
     if(!searchInput.value) {
-        console.log('please enter something first!')
+        errorMessage()
     } else {
         inputValue = formatTitle(searchInput.value)
 
         fetch(`http://www.omdbapi.com/?s=${inputValue}&apikey=f14031a0`)
             .then(response => response.json())
             .then(data => {
+                // Extract an array based on search input
                 let searchArray = data.Search
                 let movieTitlesArray = []
                 searchArray.forEach(eachMovie => {
+                    // Push the title into movieTitlesArray
                     movieTitlesArray.push(eachMovie.Title)
                 });
-                console.log(movieTitlesArray)
+                // Extract unique values
                 let uniqueTitles = new Set(movieTitlesArray)
+
                 fetchEachMovie(uniqueTitles)
             })
+            .catch(() => errorMessage())
 
         searchInput.value =''
     }
@@ -52,18 +56,20 @@ function fetchMovie() {
 // Fetch Movies based on exact title
 function fetchEachMovie(movieTitlesArray) {
     movieTitlesArray.forEach(function(eachMovieTitle) {
+        // fetch based on exact title
         fetch(`http://www.omdbapi.com/?t=${eachMovieTitle}&apikey=f14031a0`)
             .then(response => response.json())
             .then(data => {
                 renderMovieCard(data)
             })
-            .catch(error => console.log(error))
+            .catch(() => errorMessage())
     })
 }
 
 // Render the movies' stack
 function renderMovieCard(data) {
     defaultDisplaySection.style.display = 'none'
+    // Object destructuring
     const {Title, Poster, imdbRating, Runtime, Genre, Plot} = data
     movieDisplaySection.innerHTML += `
         <article class="movie-article">
@@ -87,4 +93,13 @@ function renderMovieCard(data) {
 // Format the movie title to inject in fetch request
 function formatTitle(movieTitle) {
     return movieTitle.split(' ').join('+')
+}
+
+// Render error Message
+function errorMessage() {
+    styleSection = movieDisplaySection.style
+    movieDisplaySection.innerHTML = `Unable to find what you’re looking for. Please try another search.`
+    styleSection.textAlign = 'center'
+    styleSection.marginTop = '10em'
+    styleSection.opacity = '0.4'
 }
