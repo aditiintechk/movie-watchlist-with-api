@@ -5,6 +5,7 @@
 const searchInput = document.getElementById('search-input')
 const searchButton = document.getElementById('search-btn')
 const movieDisplaySection = document.querySelector('.movie-section')
+const defaultDisplaySection = document.querySelector('.default-section')
 
 // Initialisations
 
@@ -13,6 +14,7 @@ let inputValue = ''
 // Event Listeners
 
 searchButton.addEventListener('click', function() {
+    movieDisplaySection.innerHTML = ``
     if(!searchInput.value) {
         console.log('please enter something first!')
     } else {
@@ -21,26 +23,37 @@ searchButton.addEventListener('click', function() {
         fetch(`http://www.omdbapi.com/?s=${inputValue}&apikey=f14031a0`)
             .then(response => response.json())
             .then(data => {
-                // let oneSearch = formatTitle(data.Search[0].Title)
-                // console.log(data.Search)
                 let searchArray = data.Search
-                let searchArray2 = []
+                let movieTitlesArray = []
                 searchArray.forEach(eachMovie => {
-                    searchArray2.push(eachMovie.Title)
+                    movieTitlesArray.push(eachMovie.Title)
                 });
-                console.log(searchArray2.sort())
-                // return fetch(`http://www.omdbapi.com/?t=${oneSearch}&apikey=f14031a0`)
+                console.log(movieTitlesArray)
+                let uniqueTitles = new Set(movieTitlesArray)
+                fetchEachMovie(uniqueTitles)
             })
-            // .then(response => response.json())
-            // .then(data => renderMovieCard(data))
-            // .catch(error => console.log(error))
+
+        searchInput.value =''
     }
 })
 
 
+function fetchEachMovie(movieTitlesArray) {
+    movieTitlesArray.forEach(function(eachMovieTitle) {
+        fetch(`http://www.omdbapi.com/?t=${eachMovieTitle}&apikey=f14031a0`)
+            .then(response => response.json())
+            .then(data => {
+                renderMovieCard(data)
+            })
+            .catch(error => console.log(error))
+    })
+}
+
+
 function renderMovieCard(data) {
+    defaultDisplaySection.style.display = 'none'
     const {Title, Poster, imdbRating, Runtime, Genre, Plot} = data
-    movieDisplaySection.innerHTML = `
+    movieDisplaySection.innerHTML += `
         <article class="movie-article">
             <img src="${Poster}" alt="movie poster" class="movie-poster">
             <div class="movie-info">
