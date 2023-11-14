@@ -13,7 +13,19 @@ let inputValue = ''
 
 // Event Listeners
 
-searchButton.addEventListener('click', function() {
+searchInput.addEventListener('keypress', (e) => {
+    if(e.key === "Enter") {
+        e.preventDefault()
+        searchButton.click()
+    }
+})
+
+searchButton.addEventListener('click', fetchMovie)
+
+// Functions
+
+// Fetch Movies Based on Search
+function fetchMovie() {
     movieDisplaySection.innerHTML = ``
     if(!searchInput.value) {
         console.log('please enter something first!')
@@ -35,9 +47,9 @@ searchButton.addEventListener('click', function() {
 
         searchInput.value =''
     }
-})
+}
 
-
+// Fetch Movies based on exact title
 function fetchEachMovie(movieTitlesArray) {
     movieTitlesArray.forEach(function(eachMovieTitle) {
         fetch(`http://www.omdbapi.com/?t=${eachMovieTitle}&apikey=f14031a0`)
@@ -49,7 +61,7 @@ function fetchEachMovie(movieTitlesArray) {
     })
 }
 
-
+// Render the movies' stack
 function renderMovieCard(data) {
     defaultDisplaySection.style.display = 'none'
     const {Title, Poster, imdbRating, Runtime, Genre, Plot} = data
@@ -72,20 +84,7 @@ function renderMovieCard(data) {
         </article>`
 }
 
+// Format the movie title to inject in fetch request
 function formatTitle(movieTitle) {
     return movieTitle.split(' ').join('+')
 }
-
-
-
-
-
-
-// OLD CODE
-/*
-fetch(`http://www.omdbapi.com/?s=${inputValue}&apikey=f14031a0`)
-    .then(response => response.json())
-    .then(data => {
-        console.log((data.Search[0].Title).split(' ').join('+'))
-        renderMovieCard(data.Search[0])
-    }) */

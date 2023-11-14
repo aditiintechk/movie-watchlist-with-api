@@ -4,6 +4,8 @@
     --search-btn-background: #4B4B4B;
     --main-text: #FFFFFF;
     --placeholder-text: #A5A5A5;
+    /* to enable dark scroll bar */
+    color-scheme: dark;
 }
 
 body {
