@@ -41,6 +41,18 @@ h4{
     font-weight: 200;
 }
 
+/* Common styles */
+
+/* .add-to-watchlist:hover,
+.add-to-watchlist:focus,
+.add-to-watchlist:active */
+
+.options:hover,
+.options:active,
+.options:focus {
+    color: #A5A5A5;
+}
+
 /* Main Section */
 
 main {
@@ -72,14 +84,7 @@ main {
     cursor: pointer;
 }
 
-.options:hover,
-.options:active,
-.options:focus,
-.add-to-watchlist:hover,
-.add-to-watchlist:focus,
-.add-to-watchlist:active {
-    color: #A5A5A5;
-}
+
 
 /* Search Section */
 
@@ -99,14 +104,6 @@ main {
     border-bottom-left-radius: 4px;
     opacity: 0.8;
 }
-
-/* .xmark-icon {
-    width: 0.8rem;
-    background-color: var(--input-bar-background);
-    opacity: 0.6;
-    padding-right: 0.8em;
-    cursor: pointer;
-} */
 
 #search-input {
     flex-grow: 1;
@@ -181,8 +178,22 @@ main {
     cursor: pointer;
 }
 
-.add-to-watchlist img {
+#plus-icon {
     width: 0.6rem;
+}
+
+.plus-icon {
+    width: 0.6rem;
+}
+
+.add-to-watchlist:hover,
+.add-to-watchlist:focus,
+.add-to-watchlist:active,
+.plus-icon:hover,
+.plus-icon:focus,
+#plus-icon:hover,
+#plus-icon:focus {
+    filter: invert(65%) sepia(1%) saturate(3286%) hue-rotate(20deg) brightness(101%) contrast(91%);
 }
 
 .description {
@@ -208,4 +219,17 @@ main {
     margin-top: 6em;
     color: var(--placeholder-text);
     font-weight: bold;
+}
+
+.utility {
+    opacity: 0.9;
+}
+
+.utility h3 {
+    opacity: 0.3;
+}
+
+.utility .add-to-watchlist {
+    color: var(--main-text);
+    text-decoration: none;
 }
