@@ -44,8 +44,9 @@ function fetchMovie() {
                     movieTitlesArray.push(eachMovie.Title)
                 });
                 // Extract unique values
+                console.log(movieTitlesArray)
                 let uniqueTitles = new Set(movieTitlesArray)
-
+                console.log(uniqueTitles)
                 fetchEachMovie(uniqueTitles)
             })
             .catch(() => errorMessage())
@@ -61,6 +62,7 @@ function fetchEachMovie(movieTitlesArray) {
         fetch(`http://www.omdbapi.com/?t=${eachMovieTitle}&apikey=f14031a0`)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 renderMovieCard(data)
             })
             .catch(() => errorMessage())
@@ -69,7 +71,6 @@ function fetchEachMovie(movieTitlesArray) {
 
 // Render the movies' stack
 function renderMovieCard(data) {
-    console.log(errorSection)
     defaultDisplaySection.style.display = 'none'
     errorSection.style.display = 'none'
 
@@ -96,6 +97,7 @@ function renderMovieCard(data) {
 
 // Format the movie title to inject in fetch request
 function formatTitle(movieTitle) {
+    // TODO: check for special characters
     return movieTitle.split(' ').join('+')
 }
 
