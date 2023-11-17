@@ -88,7 +88,7 @@ main {
 
 /* Search Section */
 
-.search-section {
+.search-section, .watchlist-search-section {
     display: flex;
     width: 85%;
     margin: 0 auto;
@@ -105,7 +105,7 @@ main {
     opacity: 0.8;
 }
 
-#search-input {
+#search-input, #watchlist-search-input {
     flex-grow: 1;
     font-family: inherit;
     color: var(--main-text);
@@ -118,13 +118,15 @@ main {
 }
 
 #search-input,
+#watchlist-search-input,
 .search-icon {
     background-color: var(--input-bar-background);
     border: none;
     outline: none;
 }
 
-#search-btn {
+#search-btn,
+#watchlist-search-btn {
     width: 7rem;
     background-color: var(--search-btn-background);
     border: none;
@@ -170,7 +172,7 @@ main {
     margin: 1em 0;
 }
 
-.add-to-watchlist {
+.add-to-watchlist, .remove-from-watchlist {
     background-color: none;
     border: none;
     outline: none;
@@ -178,17 +180,26 @@ main {
     cursor: pointer;
 }
 
-#plus-icon {
+.remove-from-watchlist {
+    display: flex;
+    gap: 3px;
+    display: none;
+}
+
+.plus-icon, .minus-icon {
     width: 0.6rem;
 }
 
-.plus-icon {
-    width: 0.6rem;
+.minus-icon {
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(161deg) brightness(101%) contrast(101%);
 }
 
 .add-to-watchlist:hover,
 .add-to-watchlist:focus,
 .add-to-watchlist:active,
+.remove-from-watchlist:hover,
+.remove-from-watchlist:focus
+.remove-from-watchlist:active
 .plus-icon:hover,
 .plus-icon:focus,
 #plus-icon:hover,
@@ -201,10 +212,13 @@ main {
     color: var(--placeholder-text);
 }
 
-.default-section {
+.default-section, .watchlist-default-section {
     text-align: center;
-    opacity: 0.3;
     margin-top: 6em;
+}
+
+.default-section {
+    opacity: 0.3;
 }
 
 .default-section img {
@@ -221,15 +235,15 @@ main {
     font-weight: bold;
 }
 
-.utility {
+.watchlist-default-section {
     opacity: 0.9;
 }
 
-.utility h3 {
+.watchlist-default-section h3 {
     opacity: 0.3;
 }
 
-.utility .add-to-watchlist {
+.watchlist-default-section .add-to-watchlist {
     color: var(--main-text);
     text-decoration: none;
 }

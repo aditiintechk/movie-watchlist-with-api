@@ -7,6 +7,9 @@ const searchButton = document.getElementById('search-btn')
 const movieDisplaySection = document.querySelector('.movie-section')
 const defaultDisplaySection = document.querySelector('.default-section')
 const errorSection = document.querySelector('.error-section')
+const watchlistDefaultSection = document.querySelector('.watchlist-default-section')
+const addToWatchlistBtn = document.querySelector('.add-to-watchlist')
+const removeFromWatchlistBtn = document.querySelector('.remove-from-watchlist')
 
 // Initialisations
 
@@ -44,9 +47,7 @@ function fetchMovie() {
                     movieTitlesArray.push(eachMovie.Title)
                 });
                 // Extract unique values
-                console.log(movieTitlesArray)
-                let uniqueTitles = new Set(movieTitlesArray)
-                console.log(uniqueTitles)
+                let uniqueTitles = new Set(movieTitlesArray.sort())
                 fetchEachMovie(uniqueTitles)
             })
             .catch(() => errorMessage())
@@ -89,6 +90,7 @@ function renderMovieCard(data) {
                     <h4 class="duration">${Runtime}</h4>
                     <h4 class="genre">${Genre}</h4>
                     <a class="add-to-watchlist"><img src="./assets/plus-icon.svg" alt="plus button in white" class="plus-icon"> Watchlist</a>
+                    <a class="remove-from-watchlist"><img src="./assets/minus-solid.svg" alt="plus button in white" class="minus-icon"> Remove</a>
                 </div>
                 <p class="description">${Plot}</p>
             </div>
