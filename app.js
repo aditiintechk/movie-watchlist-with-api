@@ -88,7 +88,6 @@ function renderMovieCard(data) {
                 <div class="movie-details second-row">
                     <h4 class="duration">${Runtime}</h4>
                     <h4 class="genre">${Genre}</h4>
-                    <a class="add-to-watchlist remove">Add to Watchlist</a>
                 </div>
                 <p class="description">${Plot}</p>
             </div>

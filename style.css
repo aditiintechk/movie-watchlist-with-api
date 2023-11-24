@@ -166,22 +166,6 @@ main {
     margin: 1em 0;
 }
 
-.add-to-watchlist {
-    user-select: none;
-    background-color: none;
-    border: none;
-    outline: none;
-    font-size: 0.75rem;
-    cursor: pointer;
-}
-
-
-.add-to-watchlist:hover,
-.add-to-watchlist:focus,
-.add-to-watchlist:active {
-    filter: invert(65%) sepia(1%) saturate(3286%) hue-rotate(20deg) brightness(101%) contrast(91%);
-}
-
 .description {
     font-size: 0.8rem;
     color: var(--placeholder-text);
