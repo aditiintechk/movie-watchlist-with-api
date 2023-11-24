@@ -36,7 +36,7 @@ function fetchMovie() {
     } else {
         inputValue = formatTitle(searchInput.value)
 
-        fetch(`http://www.omdbapi.com/?s=${inputValue}&apikey=f14031a0`)
+        fetch(`https://www.omdbapi.com/?s=${inputValue}&apikey=f14031a0`)
             .then(response => response.json())
             .then(data => {
                 // Extract an array based on search input
@@ -60,7 +60,7 @@ function fetchMovie() {
 function fetchEachMovie(movieTitlesArray) {
     movieTitlesArray.forEach(function(eachMovieTitle) {
         // fetch based on exact title
-        fetch(`http://www.omdbapi.com/?t=${eachMovieTitle}&apikey=f14031a0`)
+        fetch(`https://www.omdbapi.com/?t=${eachMovieTitle}&apikey=f14031a0`)
             .then(response => response.json())
             .then(data => {
                 renderMovieCard(data)
