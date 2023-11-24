@@ -43,10 +43,6 @@ h4{
 
 /* Common styles */
 
-/* .add-to-watchlist:hover,
-.add-to-watchlist:focus,
-.add-to-watchlist:active */
-
 .options:hover,
 .options:active,
 .options:focus {
@@ -88,7 +84,7 @@ main {
 
 /* Search Section */
 
-.search-section, .watchlist-search-section {
+.search-section {
     display: flex;
     width: 85%;
     margin: 0 auto;
@@ -105,7 +101,7 @@ main {
     opacity: 0.8;
 }
 
-#search-input, #watchlist-search-input {
+#search-input {
     flex-grow: 1;
     font-family: inherit;
     color: var(--main-text);
@@ -118,15 +114,13 @@ main {
 }
 
 #search-input,
-#watchlist-search-input,
 .search-icon {
     background-color: var(--input-bar-background);
     border: none;
     outline: none;
 }
 
-#search-btn,
-#watchlist-search-btn {
+#search-btn {
     width: 7rem;
     background-color: var(--search-btn-background);
     border: none;
@@ -172,7 +166,8 @@ main {
     margin: 1em 0;
 }
 
-.add-to-watchlist, .remove-from-watchlist {
+.add-to-watchlist {
+    user-select: none;
     background-color: none;
     border: none;
     outline: none;
@@ -180,30 +175,10 @@ main {
     cursor: pointer;
 }
 
-.remove-from-watchlist {
-    display: flex;
-    gap: 3px;
-    display: none;
-}
-
-.plus-icon, .minus-icon {
-    width: 0.6rem;
-}
-
-.minus-icon {
-    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(161deg) brightness(101%) contrast(101%);
-}
 
 .add-to-watchlist:hover,
 .add-to-watchlist:focus,
-.add-to-watchlist:active,
-.remove-from-watchlist:hover,
-.remove-from-watchlist:focus
-.remove-from-watchlist:active
-.plus-icon:hover,
-.plus-icon:focus,
-#plus-icon:hover,
-#plus-icon:focus {
+.add-to-watchlist:active {
     filter: invert(65%) sepia(1%) saturate(3286%) hue-rotate(20deg) brightness(101%) contrast(91%);
 }
 
@@ -212,7 +187,7 @@ main {
     color: var(--placeholder-text);
 }
 
-.default-section, .watchlist-default-section {
+.default-section {
     text-align: center;
     margin-top: 6em;
 }
@@ -233,17 +208,4 @@ main {
     margin-top: 6em;
     color: var(--placeholder-text);
     font-weight: bold;
-}
-
-.watchlist-default-section {
-    opacity: 0.9;
-}
-
-.watchlist-default-section h3 {
-    opacity: 0.3;
-}
-
-.watchlist-default-section .add-to-watchlist {
-    color: var(--main-text);
-    text-decoration: none;
 }

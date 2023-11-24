@@ -7,9 +7,7 @@ const searchButton = document.getElementById('search-btn')
 const movieDisplaySection = document.querySelector('.movie-section')
 const defaultDisplaySection = document.querySelector('.default-section')
 const errorSection = document.querySelector('.error-section')
-const watchlistDefaultSection = document.querySelector('.watchlist-default-section')
-const addToWatchlistBtn = document.querySelector('.add-to-watchlist')
-const removeFromWatchlistBtn = document.querySelector('.remove-from-watchlist')
+
 
 // Initialisations
 
@@ -25,6 +23,8 @@ searchInput.addEventListener('keypress', (e) => {
 })
 
 searchButton.addEventListener('click', fetchMovie)
+
+
 
 // Functions
 
@@ -63,7 +63,6 @@ function fetchEachMovie(movieTitlesArray) {
         fetch(`http://www.omdbapi.com/?t=${eachMovieTitle}&apikey=f14031a0`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 renderMovieCard(data)
             })
             .catch(() => errorMessage())
@@ -76,9 +75,9 @@ function renderMovieCard(data) {
     errorSection.style.display = 'none'
 
     // Object destructuring
-    const {Title, Poster, imdbRating, Runtime, Genre, Plot} = data
+    const {Title, Poster, imdbRating, Runtime, Genre, Plot, imdbID} = data
     movieDisplaySection.innerHTML += `
-        <article class="movie-article">
+        <article class="movie-article" data-movie-id ="${imdbID}">
             <img src="${Poster}" alt="movie poster" class="movie-poster">
             <div class="movie-info">
                 <div class="movie-details first-row">
@@ -89,8 +88,7 @@ function renderMovieCard(data) {
                 <div class="movie-details second-row">
                     <h4 class="duration">${Runtime}</h4>
                     <h4 class="genre">${Genre}</h4>
-                    <a class="add-to-watchlist"><img src="./assets/plus-icon.svg" alt="plus button in white" class="plus-icon"> Watchlist</a>
-                    <a class="remove-from-watchlist"><img src="./assets/minus-solid.svg" alt="plus button in white" class="minus-icon"> Remove</a>
+                    <a class="add-to-watchlist remove">Add to Watchlist</a>
                 </div>
                 <p class="description">${Plot}</p>
             </div>
