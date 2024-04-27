@@ -34,7 +34,7 @@ To run the project locally, follow these steps:
 
 ## Demo
 
-Check out the live demo [here](https://aditi002-holo.github.io/movie-watchlist-with-api/).
+Check out the live demo [here](https://aditiintechk.github.io/movie-watchlist-with-api/).
 
 ## Technologies Used
 
@@ -48,4 +48,4 @@ Check out the live demo [here](https://aditi002-holo.github.io/movie-watchlist-w
 If you have any questions or suggestions, feel free to reach out to the project owner:
 
 - Name: Aditi Deshpande
-- GitHub: [Aditi002-holo](https://github.com/Aditi002-holo)
+- GitHub: [aditiintechk](https://github.com/aditiintechk)
